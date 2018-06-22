@@ -53,7 +53,6 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
      <div class="sk-spinner sk-spinner-pulse"></div>
 </div>
 
-
 <!-- Navigation section  -->
 
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,7 +85,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 
       <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeInUp" data-wow-delay="0.3s">
         <h1 class="wow fadeInUp" data-wow-delay="0.6s">Liriz</h1>
-        <h2 style="color: #e74c3c" class="wow fadeInUp" data-wow-delay="0.9s">Necklaces and Jewelry</h2>
+        <h2 style="color: darkred" class="wow fadeInUp" data-wow-delay="0.9s">Necklaces and Jewelries</h2>
         <p class="wow fadeInUp" data-wow-delay="1.2s">For all genders and all styles</p>
         <a href="#gallery" class="smoothScroll btn btn-success btn-lg wow fadeInUp" data-wow-delay="1.2s" >Gallery</a>
       </div>
@@ -95,7 +94,37 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
 </section>
 
 <!-- Gallery section -->
+<script>
+    function modalOnClick(imgIdName) {
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById(imgIdName);
+        var modalImg = document.getElementById("img01");
+        modal.style.display = "block";
+        modalImg.src = img.src;
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    function spanClick() {
+        var modal = document.getElementById('myModal');
+        modal.style.display = "none";
+    }
+
+</script>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" onclick="spanClick();">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
 <section id="gallery">
   <div class="container">
     <div class="row">
@@ -112,7 +141,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery1.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery1.jpeg" id="img1" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -128,13 +157,11 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                         </figure>
                     </li>
                  </ul>
-            </div>
 
-            <div class="item">
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery2.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery2.jpeg" id="img2" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -156,7 +183,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery3.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery3.jpeg" id="img3" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery4.jpeg" id="img4" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -178,7 +225,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery4.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery5.jpeg" id="img5" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery6.jpeg" id="img6" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -200,7 +267,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery5.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery7.jpeg" id="img7" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery8.jpeg" id="img8" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -222,7 +309,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery6.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery9.jpeg" id="img9" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery10.jpeg" id="img10" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -244,7 +351,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery7.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery11.jpeg" id="img11" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery12.jpeg" id="img12" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -266,7 +393,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery8.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery13.jpeg" id="img13" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery14.jpeg" id="img14" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -288,7 +435,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery9.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery15.jpeg" id="img15" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery16.jpeg" id="img16" onclick="modalOnClick(this.id);" style="width:295px;height:221px;" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -310,7 +477,27 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery10.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery17.jpeg" id="img17" onclick="modalOnClick(this.id);" alt="image 2"></div>
+                            <figcaption>
+                                <h1>Liri</h1>
+                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
+                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
+                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
+                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="images/gallery18.jpeg" id="img18" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
@@ -332,183 +519,7 @@ http://tympanus.net/codrops/2013/06/18/caption-hover-effects/
                 <ul class="grid cs-style-4">
                     <li>
                         <figure>
-                            <div><img src="images/gallery11.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery12.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery13.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery14.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery15.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery16.jpeg" style="width:295px;height:221px;" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery17.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery18.jpeg" alt="image 2"></div>
-                            <figcaption>
-                                <h1>Liri</h1>
-                                <small style="font-weight: 500;color:white">₪מחיר 50 </small>
-                                <a href="javascript:;" onclick="image1Payment.submit(); " style="background-color:darkred">
-                                    <form id="image1Payment" target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="Y9QYS9MEWKTZ2">
-                                        <input type="image" src="images/cart-black.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" width="20" height="20">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
-                                </a>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="item">
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure>
-                            <div><img src="images/gallery19.jpeg" alt="image 2"></div>
+                            <div><img src="images/gallery19.jpeg" id="img19" onclick="modalOnClick(this.id);" alt="image 2"></div>
                             <figcaption>
                                 <h1>Liri</h1>
                                 <small style="font-weight: 500;color:white">₪מחיר 50 </small>
