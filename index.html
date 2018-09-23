@@ -406,6 +406,19 @@
   </div>
 </section>
 
+<script>
+    //For mobile
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+        var ImagesCount = 19;
+        var i; 
+        for (i = 1; i <= ImagesCount; i++){
+            document.getElementById("img" + String(i)).onclick = function() {
+                window.location.href = "/PurchasePage.html?imgid=" + String(this.id).substring(3,4);
+            };
+        }
+    }
+</script>
+
 
 <!-- Contact section -->
 
