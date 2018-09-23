@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="css/phpstyle.css">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script src="/js/prices.js"></script>
+    <title>Liriz Jewellry</title>
+    </head>
+<body>
+
+<section id="gallery">
+    <h1>Purchasing</h1>
+    <img id="purchaseImg" width=500 height=500 style="padding-bottom:10px;">
+    </br>
+
+    <form id="detailsForm" action="AfterPurchase.php" method="post">
+        <h2>Email</h2>
+        <input type="text" name="Email" id="emailInputSpace" placeholder="אימייל" />
+        <h2>כתובת למשלוח</h2>
+        <input type="text" name="Address" id="addressInputSpace" placeholder="כתובת משלוח מלאה" />
+        <h2>מספר טלפון</h2>
+        <input type="text" name="Phone" id="phoneInputSpace" placeholder="מספר טלפון נייד" />
+        <h2>מיקוד</h2>
+        <input type="text" name="Mikod" id="mikodInputSpace" placeholder="הכנס מיקוד" />
+        </br>
+        <input type="submit" id="subid" name="mysubmitbutton" style="visibility:hidden;" />
+    </form>
+
+    <div id="paypal-button-container" style="size:medium;"></div>
+
+    <script>
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var c = url.searchParams.get("imgid");
+        document.getElementById("purchaseImg").src = "/images/gallery" + c + ".jpeg"
+
+        function isValid(){
+            var emailInput = document.getElementById("emailInputSpace");
+            var phoneInput = document.getElementById("phoneInputSpace");
+            var addressInput = document.getElementById("addressInputSpace");
+            var mikodInput = document.getElementById("mikodInputSpace");
+
+            if (emailInput.value === ""){
+                return false;
+            }
+
+            if (addressInput.value === ""){
+                return false;
+            }
+
+            if (phoneInput.value === ""){
+                return false;
+            }
+
+            if (mikodInput.value === ""){
+                return false;
+            }
+
+            return true;
+        }
+
+        function onChangeCheckbox(handler) {
+            document.querySelector('#emailInputSpace').addEventListener('change', handler);
+            document.querySelector('#phoneInputSpace').addEventListener('change', handler);
+            document.querySelector('#addressInputSpace').addEventListener('change', handler);
+            document.querySelector('#mikodInputSpace').addEventListener('change', handler);
+        }
+
+        function toggleButton(actions) {
+            return isValid() ? actions.enable() : actions.disable();
+        }
+
+        // Render the PayPal button
+
+        paypal.Button.render({
+            style: {
+                size: 'medium'
+            },
+
+            // Set your environment
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+            client: {
+                sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                production: '<insert production client id>'
+            },
+
+            validate: function(actions) {
+                toggleButton(actions);
+
+                onChangeCheckbox(function() {
+                    toggleButton(actions);
+                });
+            },
+
+            onClick: function() {
+                if (isValid() === true){
+                    actions.enable();
+                }
+                else{
+                    window.alert("אנא מלא את כל השדות")
+                }
+            },
+
+            // Wait for the PayPal button to be clicked
+
+            payment: function(data, actions) {
+
+                // Make a client-side call to the REST api to create the payment
+
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: {
+                                    total: getPrice(c),
+                                    currency: 'ILS'
+                                }
+                            }
+                        ]
+                    }
+                });
+            },
+
+            // Wait for the payment to be authorized by the customer
+
+            onAuthorize: function(data, actions) {
+
+                // Execute the payment
+
+                return actions.payment.execute().then(function() {
+                    window.alert('קנייה הושלמה!');
+                    var myForm = document.getElementById("detailsForm");
+                    myForm.submit();
+                });
+            }
+
+        }, '#paypal-button-container');
+
+    </script>
+    
+
+
+</section>
+
+</body>
+</html>

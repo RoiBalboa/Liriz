@@ -24,6 +24,10 @@
 	position: relative;
 }
 
+figure:hover{
+    cursor: pointer;
+}
+
 .grid figcaption {
 	position: absolute;
 	top: 0;
@@ -91,7 +95,7 @@
 
 .cs-style-4 figcaption {
 	height: 100%;
-	width: 50%;
+	width: 35%;
 	opacity: 0;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
