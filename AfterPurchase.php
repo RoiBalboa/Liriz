@@ -56,8 +56,8 @@
     $txt .= "מספר טלפון:" . $phone . "\n";
     $txt .= "מיקוד:" . $mikod . "\n";
     $txt .= "מזהה שרשרת: " . $pictureCode . "\n";
-    $txt .= "סכום חיוב: " .$paymentAmount . " שקל \n";
-    $txt .= "אם הפרטים לא נכונים יש לשלוח מייל אל - lirizjewerly@gmail.com עד 12 שעות מזמן הקנייה.";
+    $txt .= "סכום חיוב: " .$paymentAmount . " שקלים \n";
+    $txt .= "אם הפרטים לא נכונים יש לשלוח מייל אל - lirizjewelry@gmail.com עד 12 שעות מזמן הקנייה.";
     $txt .= "לפניות טכניות : 0527345543\n";
     $txt .= "לפניות בנוגע למוצרים : 0546641822\n";
     $mail->CharSet = 'utf-8';
@@ -71,7 +71,7 @@
     } 
     
     $mail->ClearAddresses();
-    $mail->addAddress("lirijewerly@gmail.com", "liri.girafi@gmail.com");
+    $mail->addAddress("lirizjewelry@gmail.com", "lirizjewelry@gmail.com");
     if(!$mail->Send()) { 
     echo 'Message was not sent.'; 
     echo 'Mailer error: ' . $mail->ErrorInfo; 
