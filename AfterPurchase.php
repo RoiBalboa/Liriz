@@ -51,10 +51,12 @@
     $mikod = $_POST["Mikod"];
     $phone = $_POST["Phone"];
     $pictureCode = $_POST["PictureCode"];
+    $paymentAmount = $_POST["PaymentAmount"];
     $txt .= "כתובת:" . $address . "\n";
     $txt .= "מספר טלפון:" . $phone . "\n";
     $txt .= "מיקוד:" . $mikod . "\n";
     $txt .= "מספר שרשרת: " . $pictureCode . "\n";
+    $txt .= "סכום חיוב: " .$paymentAmount . "שקל \n";
     $txt .= "אם הפרטים לא נכונים יש לשלוח מייל בתגובה לזה עד 12 שעות מזמן הקנייה.";
     $mail->CharSet = 'utf-8';
     $mail->Body = $txt;

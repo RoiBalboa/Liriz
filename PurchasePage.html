@@ -25,6 +25,8 @@
         <input type="text" name="Mikod" id="mikodInputSpace" placeholder="הכנס מיקוד" />
         </br>
         <input type="submit" id="subid" name="mysubmitbutton" style="visibility:hidden;" />
+        <input type="text" name ="PictureCode" id="pictureInputCode" style="visibility: hidden;"/>
+        <input type="text" name ="PaymentAmount" id="paymentAmountCode" style="visibility: hidden;"/>
     </form>
 
     <div id="paypal-button-container" style="size:medium;"></div>
@@ -34,6 +36,8 @@
         var url = new URL(url_string);
         var c = url.searchParams.get("imgid");
         document.getElementById("purchaseImg").src = "/images/gallery" + c + ".jpeg"
+        document.getElementById("pictureInputCode").value = c;
+        document.getElementById("paymentAmountCode").value = getPrice(c);
 
         function isValid(){
             var emailInput = document.getElementById("emailInputSpace");
