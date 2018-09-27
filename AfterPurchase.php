@@ -2,7 +2,7 @@
 <html>
     <head>>
     <link rel="stylesheet" href="css/phpstyle.css">
-    <title>Liriz Jewellry</title>
+    <title>Liriz Jewellery</title>
     </head>
     <?php
     use PHPMailer\PHPMailer\PHPMailer;
@@ -20,17 +20,29 @@
     <?php
 
     $mail = new PHPMailer;
+    
     $mail->isSMTP();
-    $mail->SMTPDebug = 0;
+    $mail->SMTPDebug = 1;
     $mail->Debugoutput = 'html';
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
+    $mail->Host = "mail.liriz-jewellery.com";
+    $mail->Port = 465;
+    $mail->SMTPSecure = "ssl";
     $mail->SMTPAuth = true;
-    $mail->Username = "lirizjewelry@gmail.com";
+    $mail->Username = "lirizjewellery@liriz-jewellery.com";
     $mail->Password = "Roihagag123";
-    $mail->setFrom('lirizjewelry@gmail.com', 'Liri');
+    $mail->From = "lirizjewelry@gmail.com"; 
+    $mail->FromName = "Liri";
+    $mail->Sender = "lirizjewellery@liriz-jewellery.com";
     $mail->addAddress($_POST["Email"], $_POST["Email"]);
+    // Sending LIRI a copy of the message
+
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
 
     $mail->Subject = "Liriz - קנייה";
 
@@ -38,22 +50,31 @@
     $address = $_POST["Address"];
     $mikod = $_POST["Mikod"];
     $phone = $_POST["Phone"];
+    $pictureCode = $_POST["PictureCode"];
     $txt .= "כתובת:" . $address . "\n";
     $txt .= "מספר טלפון:" . $phone . "\n";
     $txt .= "מיקוד:" . $mikod . "\n";
+    $txt .= "מספר שרשרת: " . $pictureCode . "\n";
     $txt .= "אם הפרטים לא נכונים יש לשלוח מייל בתגובה לזה עד 12 שעות מזמן הקנייה.";
     $mail->CharSet = 'utf-8';
     $mail->Body = $txt;
 
-    $mail->send();
+    if(!$mail->Send()) { 
+    echo 'Message was not sent.'; 
+    echo 'Mailer error: ' . $mail->ErrorInfo; 
+    } else { 
+    echo 'Message has been sent.'; 
+    } 
+    
+    $mail->ClearAddresses();
+    $mail->addAddress("liri.girafi@gmail.com", "liri.girafi@gmail.com");
+    if(!$mail->Send()) { 
+    echo 'Message was not sent.'; 
+    echo 'Mailer error: ' . $mail->ErrorInfo; 
+    } else { 
+    echo 'Message has been sent.'; 
+    } 
 
-    $to = $_POST["Email"];
-    $subject = "Liriz - קנייה";
-
-    $headers = "From: liriz-jewelry.com" . "\r\n" ;
-
-    //mail($to,$subject,$txt,$headers);
-    // mail("liri.girafi@gmail.com",$subject,$txt,$headers);
     ?> 
 
 </section>
