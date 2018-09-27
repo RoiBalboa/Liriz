@@ -413,7 +413,7 @@
         var i; 
         for (i = 1; i <= ImagesCount; i++){
             document.getElementById("img" + String(i)).onclick = function() {
-                window.location.href = "/PurchasePage.html?imgid=" + String(this.id).substring(3,4);
+                window.location.href = "/PurchasePage.html?imgid=" + String(this.id).substring(3,String(this.id).length);
             };
         }
     }
