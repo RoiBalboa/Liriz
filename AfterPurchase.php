@@ -46,7 +46,7 @@
 
     $mail->Subject = "Liriz - קנייה";
 
-    $txt = ":תודה שקנית מהאתר שלנו, הפרטים שלך שקיבלנו הם";
+    $txt = ":תודה שקנית מהאתר שלנו, הפרטים שלך שקיבלנו הם\n";
     $address = $_POST["Address"];
     $mikod = $_POST["Mikod"];
     $phone = $_POST["Phone"];
@@ -55,9 +55,11 @@
     $txt .= "כתובת:" . $address . "\n";
     $txt .= "מספר טלפון:" . $phone . "\n";
     $txt .= "מיקוד:" . $mikod . "\n";
-    $txt .= "מספר שרשרת: " . $pictureCode . "\n";
-    $txt .= "סכום חיוב: " .$paymentAmount . "שקל \n";
-    $txt .= "אם הפרטים לא נכונים יש לשלוח מייל בתגובה לזה עד 12 שעות מזמן הקנייה.";
+    $txt .= "מזהה שרשרת: " . $pictureCode . "\n";
+    $txt .= "סכום חיוב: " .$paymentAmount . " שקל \n";
+    $txt .= "אם הפרטים לא נכונים יש לשלוח מייל אל - lirizjewerly@gmail.com עד 12 שעות מזמן הקנייה.";
+    $txt .= "לפניות טכניות : 0527345543\n";
+    $txt .= "לפניות בנוגע למוצרים : 0546641822\n";
     $mail->CharSet = 'utf-8';
     $mail->Body = $txt;
 
@@ -69,7 +71,7 @@
     } 
     
     $mail->ClearAddresses();
-    $mail->addAddress("liri.girafi@gmail.com", "liri.girafi@gmail.com");
+    $mail->addAddress("lirijewerly@gmail.com", "liri.girafi@gmail.com");
     if(!$mail->Send()) { 
     echo 'Message was not sent.'; 
     echo 'Mailer error: ' . $mail->ErrorInfo; 
