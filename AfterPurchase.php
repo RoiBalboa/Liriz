@@ -22,7 +22,7 @@
     $mail = new PHPMailer;
     
     $mail->isSMTP();
-    $mail->SMTPDebug = 1;
+    $mail->SMTPDebug = 0;
     $mail->Debugoutput = 'html';
     $mail->Host = "mail.liriz-jewellery.com";
     $mail->Port = 465;
@@ -65,21 +65,11 @@
     $mail->CharSet = 'utf-8';
     $mail->Body = $txt;
 
-    if(!$mail->Send()) { 
-    echo 'Message was not sent.'; 
-    echo 'Mailer error: ' . $mail->ErrorInfo; 
-    } else { 
-    echo 'Message has been sent.'; 
-    } 
+    $mail->Send();
     
     $mail->ClearAddresses();
     $mail->addAddress("lirizjewelry@gmail.com", "lirizjewelry@gmail.com");
-    if(!$mail->Send()) { 
-    echo 'Message was not sent.'; 
-    echo 'Mailer error: ' . $mail->ErrorInfo; 
-    } else { 
-    echo 'Message has been sent.'; 
-    } 
+    $mail->Send();
 
     ?> 
 
