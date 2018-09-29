@@ -23,6 +23,8 @@
         <input type="text" name="Phone" id="phoneInputSpace" placeholder="מספר טלפון נייד" />
         <h2>מיקוד</h2>
         <input type="text" name="Mikod" id="mikodInputSpace" placeholder="הכנס מיקוד" />
+        <h2>שם מלא</h2>
+        <input type="text" name="Name" id="nameInputSpace" placeholder="הכנס שם מלא" />
         </br>
         <input type="submit" id="subid" name="mysubmitbutton" style="visibility:hidden;" />
         <input type="text" name ="PictureCode" id="pictureInputCode" style="visibility: hidden;"/>
@@ -44,6 +46,7 @@
             var phoneInput = document.getElementById("phoneInputSpace");
             var addressInput = document.getElementById("addressInputSpace");
             var mikodInput = document.getElementById("mikodInputSpace");
+            var nameInput = document.getElementById("nameInputSpace");
 
             if (emailInput.value === ""){
                 return false;
@@ -61,6 +64,10 @@
                 return false;
             }
 
+            if (nameInput.value === ""){
+                return false;
+            }
+
             return true;
         }
 
@@ -69,6 +76,7 @@
             document.querySelector('#phoneInputSpace').addEventListener('change', handler);
             document.querySelector('#addressInputSpace').addEventListener('change', handler);
             document.querySelector('#mikodInputSpace').addEventListener('change', handler);
+            document.querySelector('#nameInputSpace').addEventListener('change', handler);
         }
 
         function toggleButton(actions) {
