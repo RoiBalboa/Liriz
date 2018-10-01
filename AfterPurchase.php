@@ -2,7 +2,7 @@
 <html>
     <head>>
     <link rel="stylesheet" href="css/phpstyle.css">
-    <title>Liriz Jewellry</title>
+    <title>Liriz Jewellery</title>
     </head>
     <?php
     use PHPMailer\PHPMailer\PHPMailer;
@@ -20,17 +20,27 @@
     <?php
 
     $mail = new PHPMailer;
+    
     $mail->isSMTP();
-    $mail->SMTPDebug = 0;
+    $mail->SMTPDebug = 2;
     $mail->Debugoutput = 'html';
-    $mail->Host = "smtp.gmail.com";
-    $mail->Port = 587;
-    $mail->SMTPSecure = 'tls';
+    $mail->Host = "host17.sherlockhost.co.uk";
+    $mail->Port = 465;
+    $mail->SMTPSecure = "ssl";
     $mail->SMTPAuth = true;
-    $mail->Username = "lirizjewelry@gmail.com";
+    $mail->Username = "lirizjewellery@liriz-jewellery.com";
     $mail->Password = "Roihagag123";
-    $mail->setFrom('lirizjewelry@gmail.com', 'Liri');
+    $mail->From = "lirizjewellery@liriz-jewellery.com"; 
+    $mail->FromName = "Liri";
+    $mail->Sender = "lirizjewellery@liriz-jewellery.com";
     $mail->addAddress($_POST["Email"], $_POST["Email"]);
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
 
     $mail->Subject = "Liriz - קנייה";
 
@@ -45,7 +55,12 @@
     $mail->CharSet = 'utf-8';
     $mail->Body = $txt;
 
-    $mail->send();
+    if(!$mail->Send()) { 
+    echo 'Message was not sent.'; 
+    echo 'Mailer error: ' . $mail->ErrorInfo; 
+    } else { 
+    echo 'Message has been sent.'; 
+    } 
 
     $to = $_POST["Email"];
     $subject = "Liriz - קנייה";
