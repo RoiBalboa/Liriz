@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/phpstyle.css">
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="/js/prices.js"></script>
-    <title>Liriz Jewellry</title>
+    <title>Liriz Jewellery - Payment Page</title>
     <meta charset="utf-8">
 </head>
 <body>
@@ -23,8 +23,12 @@
         <input type="text" name="Phone" id="phoneInputSpace" placeholder="מספר טלפון נייד" />
         <h2>מיקוד</h2>
         <input type="text" name="Mikod" id="mikodInputSpace" placeholder="הכנס מיקוד" />
+        <h2>שם מלא</h2>
+        <input type="text" name="Name" id="nameInputSpace" placeholder="הכנס שם מלא" />
         </br>
         <input type="submit" id="subid" name="mysubmitbutton" style="visibility:hidden;" />
+        <input type="text" name ="PictureCode" id="pictureInputCode" style="visibility: hidden;"/>
+        <input type="text" name ="PaymentAmount" id="paymentAmountCode" style="visibility: hidden;"/>
     </form>
 
     <div id="paypal-button-container" style="size:medium;"></div>
@@ -34,12 +38,15 @@
         var url = new URL(url_string);
         var c = url.searchParams.get("imgid");
         document.getElementById("purchaseImg").src = "/images/gallery" + c + ".jpeg"
+        document.getElementById("pictureInputCode").value = c;
+        document.getElementById("paymentAmountCode").value = getPrice(c);
 
         function isValid(){
             var emailInput = document.getElementById("emailInputSpace");
             var phoneInput = document.getElementById("phoneInputSpace");
             var addressInput = document.getElementById("addressInputSpace");
             var mikodInput = document.getElementById("mikodInputSpace");
+            var nameInput = document.getElementById("nameInputSpace");
 
             if (emailInput.value === ""){
                 return false;
@@ -57,6 +64,10 @@
                 return false;
             }
 
+            if (nameInput.value === ""){
+                return false;
+            }
+
             return true;
         }
 
@@ -65,6 +76,7 @@
             document.querySelector('#phoneInputSpace').addEventListener('change', handler);
             document.querySelector('#addressInputSpace').addEventListener('change', handler);
             document.querySelector('#mikodInputSpace').addEventListener('change', handler);
+            document.querySelector('#nameInputSpace').addEventListener('change', handler);
         }
 
         function toggleButton(actions) {
@@ -80,14 +92,14 @@
 
             // Set your environment
 
-            env: 'sandbox', // sandbox | production
+            env: 'production', // sandbox | production
 
             // PayPal Client IDs - replace with your own
             // Create a PayPal app: https://developer.paypal.com/developer/applications/create
 
             client: {
                 sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                production: '<insert production client id>'
+                production: 'AS03QUbH10Z6mK6eeFm5i3bjPoc0s7-nY4O6KiFzEz2DUO8h7i7GxnyOIRuwgAylTwdlvgkuuu0gBQMw'
             },
 
             validate: function(actions) {
